@@ -1,0 +1,55 @@
+﻿@model List<MemberSystem.Models.sql>
+
+
+<thead>
+    <tr>
+        <th scope="col">姓名</th>
+        <th scope="col">性別</th>
+        <th scope="col">電話</th>
+        <th scope="col">地址</th>
+    </tr>
+</thead>
+
+
+@foreach (var item in Model)
+{
+<tr scope="row">
+    <td style="display:none">
+        @item.id
+    </td>
+
+    <td>
+        @item.name
+    </td>
+
+
+    <td>
+        @item.gender
+    </td>
+
+
+    <td>
+        @item.tel
+    </td>
+
+
+    <td>
+        @item.adress
+    </td>
+
+    
+    <td>
+        @Html.ActionLink("編輯", "editmember", new { id = @item.id ,txtname = item.name,txttel = item.tel,txtaddress = item.adress})
+        @Html.ActionLink("刪除", "delmember", new { id = @item.id })
+    
+    </td>
+</tr>
+}
+
+@section scripts{
+    <script type="text/javascript">
+       
+
+
+    </script>
+}

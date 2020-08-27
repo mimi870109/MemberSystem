@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MemberSystem",
+    "\\MemberSystem\\Controllers",
+    "\\MemberSystem\\Models",
+    "\\MemberSystem\\Views",
+    "\\MemberSystem\\Views\\Member"
+  ],
+  "SelectedNode": "\\MemberSystem\\Models\\Member.cs",
+  "PreviewInSolutionExplorer": false
+}

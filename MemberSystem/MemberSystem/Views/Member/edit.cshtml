@@ -1,0 +1,76 @@
+﻿@model MemberSystem.Models.Member
+<table class="table table-dark">
+    <tr style="display:none;">
+        <td>
+            <input type="text" value="@Model.id" id="id" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            姓名
+        </td>
+        <td>
+            <input type="text" value="@Model.txtname" id="txtname" />
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            電話
+        </td>
+        <td>
+            <input type="text" value="@Model.txttel" id="txttel" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            地址
+        </td>
+        <td>
+            <input type="text" value="@Model.txtaddress" id="txtaddress" />
+        </td>
+    </tr>
+</table>
+<div>
+    <input type="button" id="saveedit" value="修改" />
+    
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#saveedit").click(function () {
+
+                debugger;
+                $.ajax({
+                    url: "@Url.Action("saveeditmember")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { id: $("#id").val(), txtname: $("#txtname").val(), txttel: $("#txttel").val(), txtaddress: $("#txtaddress").val() },
+                    success: function (data) { alert(data);}
+                })
+
+            }
+            )
+
+             $("#butsel").click(function () {
+
+                 debugger;
+                 //window.location.href = "/Home/sel/"
+                 $.ajax({
+                     url: "@Url.Action("selmember")",
+                     type: "POST",
+                     data: {txtname: $("#txtname").val()},
+                     success: function (data) {
+                         debugger;
+                     $("#tb").html(data);
+                      }
+             })
+                 return false;
+            })
+
+        })
+
+    </script>
+}

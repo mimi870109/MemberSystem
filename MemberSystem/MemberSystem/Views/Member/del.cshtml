@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "del";
+}
+
+<h2>刪除</h2>
+<div class="form-group row">
+    <input type="button" id="butdel" value="刪除" />
+    <input type="button" id="butcrear" value="取消" />
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#butdel").click(function () {
+
+                debugger;
+                $.ajax({
+                    url: "@Url.Action("delmember")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { txtname: $("#txtname").val(), gender: $("#gender").val(), txttel: $("#txttel").val(), txtaddress: $("#txtaddress").val() },
+                    success: function (data) { alert('刪除成功');}
+                })
+
+            }
+                )
+        })
+
+    </script>
+}

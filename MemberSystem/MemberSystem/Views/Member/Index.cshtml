@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>第二題</h2>
+<h3>新增</h3>
+<div class="form-group row">
+    姓名 <input type="text" id="txtname" />
+</div>
+<div class="form-group row">
+    姓別 <select name="genders" id="gender">
+        <option value=""></option>
+        <option value="g">女</option>
+        <option value="b">男</option>
+    </select>
+</div>
+<div class="form-group row">
+    電話 <input type="text" id="txttel" />
+</div>
+<div class="form-group row">
+    住址 <input type="text" id="txtaddress" />
+</div>
+<div class="form-group row">
+    <input type="button" id="butsave" value="送出" />
+    <input type="button" id="butcrear" value="清除" />
+</div>
+
+<div class="form-group row">
+    <input type="button" id="butsel" value="查詢所有會員" />
+</div>
+<h2>全部會員資料</h2>
+<table id="tb" class="table table-dark"></table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#butsave").click(function () {
+                
+                debugger;
+                $.ajax({
+                    url: "@Url.Action("insmember")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { txtname: $("#txtname").val(), gender: $("#gender").val(), txttel: $("#txttel").val(), txtaddress: $("#txtaddress").val() },
+                    success: function (data) { alert(data);}
+                })
+
+            }
+            )
+
+             $("#butsel").click(function () {
+
+                 debugger;
+                 //window.location.href = "/Home/sel/"
+                 $.ajax({
+                     url: "@Url.Action("selmember")",
+                     type: "POST",
+                     data: {txtname: $("#txtname").val()},
+                     success: function (data) {
+                         debugger;
+                     $("#tb").html(data);
+                      }
+             })
+                 return false;
+            })
+
+        })
+
+    </script>
+}
